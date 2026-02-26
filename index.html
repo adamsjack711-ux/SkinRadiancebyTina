@@ -1,0 +1,375 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Studio Name — Clinical Tattooing</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            blush:   '#f0e0da',
+            rose:    '#d4a09a',
+            muted:   '#b07c76',
+            cream:   '#faf7f5',
+            ink:     '#2e2a29',
+            soft:    '#7a6e6c',
+          },
+          fontFamily: {
+            serif: ['"Playfair Display"', 'Georgia', 'serif'],
+            sans:  ['"Inter"', 'sans-serif'],
+          }
+        }
+      }
+    }
+  </script>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;1,400&family=Inter:wght@300;400;500&display=swap" />
+  <style>
+    html { scroll-behavior: smooth; }
+
+    /* Nav link underline animation */
+    .nav-link {
+      position: relative;
+    }
+    .nav-link::after {
+      content: '';
+      position: absolute;
+      bottom: -2px; left: 0;
+      width: 0; height: 1px;
+      background: #d4a09a;
+      transition: width 0.3s ease;
+    }
+    .nav-link:hover::after { width: 100%; }
+
+    /* Gallery hover */
+    .gallery-item img {
+      transition: transform 0.4s ease;
+    }
+    .gallery-item:hover img { transform: scale(1.04); }
+
+    /* Mobile menu */
+    #mobile-menu { display: none; }
+    #mobile-menu.open { display: flex; }
+  </style>
+</head>
+<body class="bg-cream text-ink font-sans antialiased">
+
+  <!-- ── NAV ─────────────────────────────────────────── -->
+  <header class="fixed top-0 left-0 right-0 z-50 bg-cream/90 backdrop-blur-sm border-b border-blush">
+    <nav class="max-w-5xl mx-auto px-6 h-16 flex items-center justify-between">
+      <a href="#hero" class="font-serif text-xl tracking-wide text-ink">Studio Name</a>
+
+      <!-- Desktop links -->
+      <ul class="hidden md:flex gap-8 text-sm text-soft font-medium tracking-wide">
+        <li><a href="#about"   class="nav-link hover:text-ink transition-colors">About</a></li>
+        <li><a href="#gallery" class="nav-link hover:text-ink transition-colors">Gallery</a></li>
+        <li><a href="#pricing" class="nav-link hover:text-ink transition-colors">Pricing</a></li>
+        <li><a href="#booking" class="nav-link hover:text-ink transition-colors">Booking</a></li>
+      </ul>
+
+      <!-- Book CTA (desktop) -->
+      <a href="#booking" class="hidden md:inline-block bg-rose text-white text-sm px-5 py-2 rounded-full hover:bg-muted transition-colors">
+        Book Now
+      </a>
+
+      <!-- Hamburger (mobile) -->
+      <button id="hamburger" class="md:hidden flex flex-col gap-1.5 p-2" aria-label="Open menu">
+        <span class="w-6 h-0.5 bg-ink block"></span>
+        <span class="w-6 h-0.5 bg-ink block"></span>
+        <span class="w-6 h-0.5 bg-ink block"></span>
+      </button>
+    </nav>
+
+    <!-- Mobile menu -->
+    <div id="mobile-menu" class="flex-col items-center gap-6 py-6 bg-cream border-t border-blush text-soft font-medium text-sm tracking-wide">
+      <a href="#about"   class="hover:text-ink" onclick="closeMobileMenu()">About</a>
+      <a href="#gallery" class="hover:text-ink" onclick="closeMobileMenu()">Gallery</a>
+      <a href="#pricing" class="hover:text-ink" onclick="closeMobileMenu()">Pricing</a>
+      <a href="#booking" class="hover:text-ink" onclick="closeMobileMenu()">Booking</a>
+      <a href="#booking" class="bg-rose text-white px-6 py-2 rounded-full hover:bg-muted transition-colors" onclick="closeMobileMenu()">Book Now</a>
+    </div>
+  </header>
+
+  <!-- ── HERO ─────────────────────────────────────────── -->
+  <section id="hero" class="min-h-screen flex flex-col items-center justify-center text-center px-6 pt-16 bg-gradient-to-b from-blush/30 to-cream">
+    <p class="text-rose text-sm tracking-[0.2em] uppercase mb-4 font-medium">Clinical Tattoo Artist</p>
+    <h1 class="font-serif text-5xl md:text-7xl text-ink leading-tight mb-6">
+      Gentle ink.<br /><em>Real results.</em>
+    </h1>
+    <p class="text-soft text-lg max-w-xl mb-10 leading-relaxed">
+      Specializing in medical and clinical tattooing — from scar camouflage to areola restoration — with a focus on safety, precision, and your comfort.
+    </p>
+    <div class="flex flex-col sm:flex-row gap-4 justify-center">
+      <a href="#booking" class="bg-rose text-white px-8 py-3 rounded-full text-sm font-medium hover:bg-muted transition-colors">
+        Book a Consultation
+      </a>
+      <a href="#gallery" class="border border-rose text-rose px-8 py-3 rounded-full text-sm font-medium hover:bg-blush transition-colors">
+        View Work
+      </a>
+    </div>
+
+    <!-- Scroll indicator -->
+    <div class="absolute bottom-10 flex flex-col items-center gap-1 text-soft/60 text-xs tracking-widest">
+      <span>SCROLL</span>
+      <svg class="w-4 h-4 animate-bounce" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M19 9l-7 7-7-7"/>
+      </svg>
+    </div>
+  </section>
+
+  <!-- ── ABOUT ─────────────────────────────────────────── -->
+  <section id="about" class="py-24 px-6 max-w-5xl mx-auto">
+    <div class="grid md:grid-cols-2 gap-16 items-center">
+      <!-- Placeholder image -->
+      <div class="rounded-2xl overflow-hidden bg-blush aspect-[4/5] flex items-center justify-center">
+        <span class="text-muted/50 text-sm">[ Artist photo ]</span>
+      </div>
+
+      <!-- Text -->
+      <div>
+        <p class="text-rose text-sm tracking-[0.2em] uppercase mb-3 font-medium">About</p>
+        <h2 class="font-serif text-4xl text-ink mb-6">Hello, I'm<br /><em>Artist Name</em></h2>
+        <p class="text-soft leading-relaxed mb-4">
+          Placeholder bio — a brief introduction to the artist, their background, and what drew them to clinical tattooing. Mention training, certifications, and any relevant medical or aesthetic credentials.
+        </p>
+        <p class="text-soft leading-relaxed mb-4">
+          Clinical tattooing is more than art — it's about helping people reclaim confidence after surgery, illness, or injury. Every client deserves a calm, professional, and compassionate experience.
+        </p>
+        <p class="text-soft leading-relaxed mb-8">
+          Based in [City, State]. Fully licensed and insured. Consultations available in-studio or virtually.
+        </p>
+        <ul class="flex flex-col gap-2 text-sm text-soft">
+          <li class="flex items-center gap-2">
+            <span class="w-2 h-2 rounded-full bg-rose inline-block"></span>
+            Certified in [Certification Name]
+          </li>
+          <li class="flex items-center gap-2">
+            <span class="w-2 h-2 rounded-full bg-rose inline-block"></span>
+            [X] years of tattooing experience
+          </li>
+          <li class="flex items-center gap-2">
+            <span class="w-2 h-2 rounded-full bg-rose inline-block"></span>
+            OSHA / Bloodborne Pathogen certified
+          </li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── GALLERY ─────────────────────────────────────────── -->
+  <section id="gallery" class="py-24 px-6 bg-blush/20">
+    <div class="max-w-5xl mx-auto">
+      <div class="text-center mb-14">
+        <p class="text-rose text-sm tracking-[0.2em] uppercase mb-3 font-medium">Work</p>
+        <h2 class="font-serif text-4xl text-ink">Gallery</h2>
+        <p class="text-soft mt-3 max-w-md mx-auto">A selection of clinical tattoo work — all images shared with client consent.</p>
+      </div>
+
+      <!-- Gallery grid -->
+      <div class="grid grid-cols-2 md:grid-cols-3 gap-4">
+        <!-- 6 placeholder tiles -->
+        <div class="gallery-item rounded-xl overflow-hidden aspect-square bg-blush flex items-center justify-center cursor-pointer">
+          <span class="text-muted/50 text-xs">[ Photo 1 ]</span>
+        </div>
+        <div class="gallery-item rounded-xl overflow-hidden aspect-square bg-rose/20 flex items-center justify-center cursor-pointer">
+          <span class="text-muted/50 text-xs">[ Photo 2 ]</span>
+        </div>
+        <div class="gallery-item rounded-xl overflow-hidden aspect-square bg-blush flex items-center justify-center cursor-pointer">
+          <span class="text-muted/50 text-xs">[ Photo 3 ]</span>
+        </div>
+        <div class="gallery-item rounded-xl overflow-hidden aspect-square bg-rose/20 flex items-center justify-center cursor-pointer">
+          <span class="text-muted/50 text-xs">[ Photo 4 ]</span>
+        </div>
+        <div class="gallery-item rounded-xl overflow-hidden aspect-square bg-blush flex items-center justify-center cursor-pointer">
+          <span class="text-muted/50 text-xs">[ Photo 5 ]</span>
+        </div>
+        <div class="gallery-item rounded-xl overflow-hidden aspect-square bg-rose/20 flex items-center justify-center cursor-pointer">
+          <span class="text-muted/50 text-xs">[ Photo 6 ]</span>
+        </div>
+      </div>
+
+      <p class="text-center text-soft/60 text-xs mt-8">More work available on Instagram — <a href="#" class="underline hover:text-rose">@handle</a></p>
+    </div>
+  </section>
+
+  <!-- ── PRICING ─────────────────────────────────────────── -->
+  <section id="pricing" class="py-24 px-6 max-w-5xl mx-auto">
+    <div class="text-center mb-14">
+      <p class="text-rose text-sm tracking-[0.2em] uppercase mb-3 font-medium">Pricing</p>
+      <h2 class="font-serif text-4xl text-ink">Services</h2>
+      <p class="text-soft mt-3 max-w-md mx-auto">All services begin with a complimentary consultation to discuss your goals and assess candidacy.</p>
+    </div>
+
+    <div class="grid md:grid-cols-3 gap-6">
+      <!-- Card 1 -->
+      <div class="bg-white rounded-2xl p-8 border border-blush hover:shadow-md transition-shadow">
+        <h3 class="font-serif text-xl text-ink mb-2">Scar Camouflage</h3>
+        <p class="text-rose font-medium text-lg mb-4">Starting at $XXX</p>
+        <p class="text-soft text-sm leading-relaxed mb-6">
+          Blending scars from surgeries, injuries, or stretch marks into surrounding skin tone using pigment matching techniques.
+        </p>
+        <ul class="text-sm text-soft flex flex-col gap-2">
+          <li class="flex gap-2"><span class="text-rose">✓</span> Consultation included</li>
+          <li class="flex gap-2"><span class="text-rose">✓</span> Custom pigment blending</li>
+          <li class="flex gap-2"><span class="text-rose">✓</span> Touch-up session</li>
+        </ul>
+      </div>
+
+      <!-- Card 2 (featured) -->
+      <div class="bg-rose text-white rounded-2xl p-8 shadow-lg scale-[1.02]">
+        <p class="text-white/70 text-xs tracking-widest uppercase mb-1">Most Requested</p>
+        <h3 class="font-serif text-xl mb-2">Areola Restoration</h3>
+        <p class="font-medium text-lg mb-4">Starting at $XXX</p>
+        <p class="text-white/80 text-sm leading-relaxed mb-6">
+          3D nipple and areola tattooing for post-mastectomy clients, creating a realistic, natural appearance.
+        </p>
+        <ul class="text-sm text-white/80 flex flex-col gap-2">
+          <li class="flex gap-2"><span>✓</span> Bilateral or unilateral</li>
+          <li class="flex gap-2"><span>✓</span> Customized sizing & tone</li>
+          <li class="flex gap-2"><span>✓</span> Follow-up included</li>
+        </ul>
+      </div>
+
+      <!-- Card 3 -->
+      <div class="bg-white rounded-2xl p-8 border border-blush hover:shadow-md transition-shadow">
+        <h3 class="font-serif text-xl text-ink mb-2">Scalp Micropigmentation</h3>
+        <p class="text-rose font-medium text-lg mb-4">Starting at $XXX</p>
+        <p class="text-soft text-sm leading-relaxed mb-6">
+          Replicating hair follicles on the scalp to address thinning hair, alopecia, or transplant scarring.
+        </p>
+        <ul class="text-sm text-soft flex flex-col gap-2">
+          <li class="flex gap-2"><span class="text-rose">✓</span> Multi-session treatment</li>
+          <li class="flex gap-2"><span class="text-rose">✓</span> Natural-looking density</li>
+          <li class="flex gap-2"><span class="text-rose">✓</span> Long-lasting results</li>
+        </ul>
+      </div>
+    </div>
+
+    <p class="text-center text-soft/70 text-sm mt-10">
+      Pricing varies based on size, complexity, and number of sessions. Final quote provided after consultation.
+    </p>
+  </section>
+
+  <!-- ── BOOKING ─────────────────────────────────────────── -->
+  <section id="booking" class="py-24 px-6 bg-blush/20">
+    <div class="max-w-2xl mx-auto">
+      <div class="text-center mb-12">
+        <p class="text-rose text-sm tracking-[0.2em] uppercase mb-3 font-medium">Get in Touch</p>
+        <h2 class="font-serif text-4xl text-ink">Book a Consultation</h2>
+        <p class="text-soft mt-3">Fill out the form below and you'll hear back within 2 business days.</p>
+      </div>
+
+      <!-- Replace YOUR_FORM_ID with your Formspree endpoint -->
+      <form action="https://formspree.io/f/YOUR_FORM_ID" method="POST" class="bg-white rounded-2xl p-8 md:p-12 border border-blush flex flex-col gap-5">
+        <div class="grid sm:grid-cols-2 gap-5">
+          <div>
+            <label class="block text-sm text-soft mb-1.5" for="name">Full Name</label>
+            <input id="name" name="name" type="text" required placeholder="Jane Smith"
+              class="w-full border border-blush rounded-lg px-4 py-3 text-sm text-ink bg-cream focus:outline-none focus:border-rose transition-colors" />
+          </div>
+          <div>
+            <label class="block text-sm text-soft mb-1.5" for="email">Email</label>
+            <input id="email" name="email" type="email" required placeholder="jane@email.com"
+              class="w-full border border-blush rounded-lg px-4 py-3 text-sm text-ink bg-cream focus:outline-none focus:border-rose transition-colors" />
+          </div>
+        </div>
+
+        <div>
+          <label class="block text-sm text-soft mb-1.5" for="phone">Phone (optional)</label>
+          <input id="phone" name="phone" type="tel" placeholder="(555) 000-0000"
+            class="w-full border border-blush rounded-lg px-4 py-3 text-sm text-ink bg-cream focus:outline-none focus:border-rose transition-colors" />
+        </div>
+
+        <div>
+          <label class="block text-sm text-soft mb-1.5" for="service">Service of Interest</label>
+          <select id="service" name="service" required
+            class="w-full border border-blush rounded-lg px-4 py-3 text-sm text-ink bg-cream focus:outline-none focus:border-rose transition-colors appearance-none">
+            <option value="" disabled selected>Select a service...</option>
+            <option>Scar Camouflage</option>
+            <option>Areola Restoration</option>
+            <option>Scalp Micropigmentation</option>
+            <option>Other / Not sure yet</option>
+          </select>
+        </div>
+
+        <div>
+          <label class="block text-sm text-soft mb-1.5" for="message">Tell me about your goals</label>
+          <textarea id="message" name="message" rows="4" required
+            placeholder="A brief description of what you're looking for, any relevant history, and any questions you have..."
+            class="w-full border border-blush rounded-lg px-4 py-3 text-sm text-ink bg-cream focus:outline-none focus:border-rose transition-colors resize-none"></textarea>
+        </div>
+
+        <p class="text-xs text-soft/70">
+          All information is kept strictly confidential. Photos may be requested after initial contact.
+        </p>
+
+        <button type="submit"
+          class="w-full bg-rose text-white py-3.5 rounded-full text-sm font-medium hover:bg-muted transition-colors mt-2">
+          Send Request
+        </button>
+      </form>
+    </div>
+  </section>
+
+  <!-- ── FOOTER ─────────────────────────────────────────── -->
+  <footer class="py-10 px-6 border-t border-blush text-center">
+    <p class="font-serif text-lg text-ink mb-1">Studio Name</p>
+    <p class="text-soft text-sm mb-4">[City, State] &nbsp;·&nbsp; By appointment only</p>
+    <div class="flex justify-center gap-6 text-soft text-sm mb-6">
+      <a href="#" class="hover:text-rose transition-colors">Instagram</a>
+      <a href="#" class="hover:text-rose transition-colors">Facebook</a>
+      <a href="mailto:email@example.com" class="hover:text-rose transition-colors">Email</a>
+    </div>
+    <p class="text-soft/40 text-xs">&copy; 2026 Studio Name. All rights reserved.</p>
+  </footer>
+
+  <!-- ── JS ─────────────────────────────────────────── -->
+  <script>
+    // Mobile menu toggle
+    const hamburger = document.getElementById('hamburger');
+    const mobileMenu = document.getElementById('mobile-menu');
+
+    hamburger.addEventListener('click', () => {
+      mobileMenu.classList.toggle('open');
+    });
+
+    function closeMobileMenu() {
+      mobileMenu.classList.remove('open');
+    }
+
+    // Highlight active nav section on scroll
+    const sections = document.querySelectorAll('section[id]');
+    const navLinks = document.querySelectorAll('.nav-link');
+
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          navLinks.forEach(link => {
+            link.classList.remove('text-ink');
+            if (link.getAttribute('href') === '#' + entry.target.id) {
+              link.classList.add('text-ink');
+            }
+          });
+        }
+      });
+    }, { threshold: 0.4 });
+
+    sections.forEach(s => observer.observe(s));
+
+    // Simple form success message
+    const form = document.querySelector('form');
+    const params = new URLSearchParams(window.location.search);
+    if (params.get('success')) {
+      form.innerHTML = `
+        <div class="text-center py-12">
+          <p class="text-rose text-4xl mb-4">✓</p>
+          <h3 class="font-serif text-2xl text-ink mb-2">Message Received</h3>
+          <p class="text-soft">Thank you for reaching out. You'll hear back within 2 business days.</p>
+        </div>`;
+    }
+  </script>
+</body>
+</html>
